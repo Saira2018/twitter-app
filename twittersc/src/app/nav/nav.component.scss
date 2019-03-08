@@ -1,0 +1,45 @@
+header {
+    background: black;
+
+
+    .logo {
+        font-weight: bold;
+        text-transform: uppercase;
+        justify-self: flex-start;
+    }
+
+    nav {
+        justify-self: right;
+        
+        ul { 
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                float: left;
+                //font-weight: bold;
+
+                a {
+                    margin: 1.5em;
+                    text-transform: uppercase;
+                    font-size: .8em;
+                    display: inline-block;
+                    position: relative;
+
+                    &:hover::after {
+                        content: '';
+                        position: absolute;
+                        left:0;
+                        display: inline-block;
+                        height: 1em;
+                        width: 100%;
+                        border-bottom: 5px solid;
+                        margin-top: 15px;
+                    }
+                }
+            }
+
+        }
+    }
+}

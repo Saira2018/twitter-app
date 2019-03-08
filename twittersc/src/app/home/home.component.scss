@@ -1,0 +1,39 @@
+.intro-box {
+    background: #fff;
+    width: 760px;
+    height: 337px;
+    top: 0;
+    margin-top:10%;
+    position: relative;
+    color: #626B72;
+    font-size: 20px;
+    line-height: 30px;
+    padding-top: 50px;
+    padding: 30px;
+    padding-bottom:10px!important;
+    font-family: 'Arial';
+
+        h1 {
+            font-family: 'Georgia';
+            font-size: 40px;
+            font-weight: lighter;
+        }
+
+        a {
+            color: #2699FB;
+        }
+
+        .cta {
+            background: #2699FB;
+            color: white;
+            text-transform: uppercase;
+            border-radius: 4px;
+            padding: 1em;
+            cursor: pointer;
+            font-family: 'Arial';
+            border: none;
+            font-size: 18px;
+            position: absolute;
+            right: 30px;
+        }
+}
