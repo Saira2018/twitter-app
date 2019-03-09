@@ -51,20 +51,124 @@
   }
   
 
-  //// card styling ////
+.twitter-strip{
+  display: inline-block;
+  margin: 50px 0;
+}
 
-  .cards-holder {
-    height: 541px;
-    margin-top: 58px;
-    .card-container{
-        width: 350px;
-        height: 428px;
-        background-color: white;
-        margin-right: 20px;
-        display: block;
-        float: left;
-    }
+  .card-wrapper {
+    position:relative;
+    width:360px;
+    height: 451px;
+    background: white;
+    float: left;
+    margin-right: 20px;
   }
+  
+  .card-content {
+    position:absolute;
+    height: 387px;
+    width: 305px;
+    margin: 28px;
+    color: #818181;
+  }
+  
+  .twitter-user {
+    width: 100%;
+    height: 40px;
+    margin-bottom:16px;
+  }
+  
+  .twitter-circle-profile {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #818181;
+  }
+  
+  .twitter-circle-profile, .twitter-name, .twitter-handle, .twitter-post-dt {
+    float: left;
+  }
+  
+   .twitter-name, .twitter-handle {
+    margin-left: 5px;
+  }
+  
+.twitter-name p, .twitter-handle p {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.twitter-handle p {
+  color: #C8C8C8;
+}
+
+
+  .twitter-post-dt {
+    float: right;
+    margin-right: 10px;
+    font-size: 12px;
+    color:#C8C8C8;
+    font-style: italic;
+  }
+  
+  .twitter-text {
+    height: 84px;
+    margin-bottom:32px;
+    font-size: 12px;
+  }
+  
+  .twitter-image {
+    height: 170px;
+    margin-bottom: 25px;
+  }
+  
+  .img-holder{
+    height: inherit;
+    background: lightgray;
+    //border: 4px solid darkgray;
+  }
+  
+  
+  .twitter-stats {
+    height: 20px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  
+  .twitter-love {
+    width: 33.3%;
+    float: left;
+    margin:0;
+  }
+  
+  .twitter-retweet {
+    width: 33.3%;
+    float: left;
+    margin: 0;
+  }
+  
+  .twitter-stats p {
+    margin:0;
+  }
+  
+  .spacer {
+    height: inherit;
+    width: 33.3%;
+    float: left;
+  }
+  
+  .fa, .stats {
+    color: #818181;
+  }
+  
+  .stats i {
+    margin-right:8px;
+  }
+  
+  
+  
+
 
 
   //// carousel controls ////
