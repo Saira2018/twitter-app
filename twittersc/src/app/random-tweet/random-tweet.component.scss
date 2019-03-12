@@ -1,0 +1,59 @@
+#twitter-random-strip {
+    display: inline-block;
+}
+
+.twitter-random-card {
+    position: relative;
+    width: 564px;
+    height: 606px;
+    background-color: yellow;
+    float: left;
+    margin-right: 43px;
+}
+
+.top-head {
+    position: absolute;
+    height: 174px;
+    width: 564px;
+    background-color: #403737; //insert picture here
+    .twitter-head {
+        height: 62px;
+        width: 100%;
+        top: calc(174px - 62px);
+        position: relative;
+        background: black;
+        bottom:0;
+        color: white;
+        padding: 0 20px;
+        box-sizing: border-box;
+        > h4 {
+            display: inline-block;
+            font-size: 18px;
+            > span {
+                font-size: 13px;
+            }
+        }
+
+        > div.profile-circle {
+            display: inline-block;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            right: 20px;
+            margin-top: 6px;
+        }
+    }
+}
+
+.expanded-content {
+    position:relative;
+    top: 174px;
+    height:432px;
+    background-color:purple;
+  //box-sizing: border-box;
+;
+
+}
+
