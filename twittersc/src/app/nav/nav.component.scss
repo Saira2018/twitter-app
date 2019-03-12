@@ -5,7 +5,9 @@ header {
     .logo {
         font-weight: bold;
         text-transform: uppercase;
-        justify-self: flex-start;
+        position: relative;
+        top: 50%;
+        transform: translateY(-20%);
     }
 
     nav {
