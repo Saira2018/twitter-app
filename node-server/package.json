@@ -11,5 +11,8 @@
     "url": "https://github.com/Saira2018/twitter-app/tree/sc-server-work"
   },
   "author": "Saira C",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
