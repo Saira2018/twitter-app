@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const path = require('path');
+const request = require('request-promise');
 
 const app = express();
 
@@ -14,7 +15,29 @@ const server = http.createServer(app);
 
 server.listen(port,() => console.log('Running...'));
 
-var Twit = require('twit');
+var token = {
+   method: 'POST',
+   uri: 'https://api.twitter.com/oauth2/token',
+   form: {
+      grant_type: 'client_credentials'
+   },
+   json: true // Automatically stringifies the body to JSON
+};
+
+request(token)
+   .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
+   .then(function (parsedBody) {
+      console.log("response: ", parsedBody)
+      console.log('token-type: ', parsedBody.token_type);
+      console.log('access-token: ', parsedBody.access_token);
+       // POST succeeded...
+   })
+   .catch(function (err) {
+      console.log("failure: ", err)
+       // POST failed...
+   });
+
+/*var Twit = require('twit');
 
 var T = new Twit({
    consumer_key: 'CTRQEpzD07wT6r5FLpPMIVONQ',
@@ -47,4 +70,4 @@ function getTweets (err, data, response) {
    //console.log('----------- Entire collection ------------');
   // console.log(data);
    //console.log('------------------------------------------');
-}
+}*/
