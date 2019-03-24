@@ -24,18 +24,36 @@ var token = {
    json: true // Automatically stringifies the body to JSON
 };
 
+
+
 request(token)
    .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
    .then(function (parsedBody) {
       console.log("response: ", parsedBody)
       console.log('token-type: ', parsedBody.token_type);
       console.log('access-token: ', parsedBody.access_token);
+      
        // POST succeeded...
    })
    .catch(function (err) {
       console.log("failure: ", err)
        // POST failed...
    });
+
+   var searchParams = {
+      method: 'GET',
+      uri: 'https://api.twitter.com/1.1/search/tweets.json',
+      qs: {
+         q: nasa,
+         result_type: popular
+      },
+      headers: {
+         'User-Agent': 'request',
+         'Authorization' : 'Bearer '+parsedBody.access_token + ''
+      }
+      
+   }
+
 
 /*var Twit = require('twit');
 
