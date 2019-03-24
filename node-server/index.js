@@ -24,68 +24,73 @@ var token = {
    json: true // Automatically stringifies the body to JSON
 };
 
-
+var twitterScreenName = 'worldArchery'
 
 request(token)
    .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
-   .then(function (parsedBody) {
-      console.log("response: ", parsedBody)
-      console.log('token-type: ', parsedBody.token_type);
-      console.log('access-token: ', parsedBody.access_token);
-      
-       // POST succeeded...
+   .then(function (jsonData) {
+      //store bearerToken to be used in 'get' functions
+       bearerToken = jsonData.access_token;
+
+       getTweets(bearerToken);
+       getUsers(bearerToken);
    })
    .catch(function (err) {
       console.log("failure: ", err)
-       // POST failed...
    });
 
+//retrieve tweets from twitter   
+function getTweets(bearerToken) {
    var searchParams = {
       method: 'GET',
       uri: 'https://api.twitter.com/1.1/search/tweets.json',
       qs: {
-         q: nasa,
-         result_type: popular
+         q: twitterScreenName,
+         result_type: 'popular',
+         count: 2
       },
-      headers: {
-         'User-Agent': 'request',
-         'Authorization' : 'Bearer '+parsedBody.access_token + ''
+      auth: {
+         bearer: bearerToken
+      },
+      json: true
+   };
+
+request(searchParams)
+   .then(function(jsonData){
+     var tweets = jsonData.statuses;
+      for(i=0 ; i < tweets.length; i++ ){
+         console.log('----------- Individual Tweet : #' + (i+1) + ' ------------');
+         console.log(tweets[i].text);
+         console.log('Favourite count: ' + tweets[i].favorite_count);
+         console.log('------------------------------------------');
       }
-      
-   }
-
-
-/*var Twit = require('twit');
-
-var T = new Twit({
-   consumer_key: 'CTRQEpzD07wT6r5FLpPMIVONQ',
-   consumer_secret: 'wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU',
-   access_token: '1107206945285517312-w7ItFZ5mePQ7Ck5g9u6BWAtqtl4m29',
-   access_token_secret: 'P2TdmiFrbQckB81eHKhWbTLMFVz4qHgDMmCWScW8zoOcx',
-})
-
-var tweetParams = {
-   q: 'simonscat',
-   count: 3
+   })
+   .catch(function (errorObject){
+      console.log(errorObject);
+   });
 }
 
-//send HTTP GET request to API endpoint for retrieving tweets
-T.get('search/tweets', tweetParams, getTweets);
-
- //return data
-function getTweets (err, data, response) {
-
-   //extract text data from tweets.
-   var tweets = data.statuses; //tweet object as an array
-   for(i=0 ; i < tweets.length; i++ ){
-      console.log('----------- Individual Tweet : #' + (i+1) + ' ------------');
-      console.log(tweets[i].text);
-      console.log('Favourite count: ' + tweets[i].favorite_count);
-      console.log('------------------------------------------');
-
+//Retrieve User data from Twitter
+function getUsers(bearerToken){
+   var searchParams = {
+      method: 'GET',
+      uri: 'https://api.twitter.com/1.1/users/show.json',
+      qs: {
+         screen_name: twitterHandle
+      },
+      auth: {
+         bearer: bearerToken
+      },
+      json: true // Automatically stringifies the body to JSON
    }
 
-   //console.log('----------- Entire collection ------------');
-  // console.log(data);
-   //console.log('------------------------------------------');
-}*/
+   request(searchParams)
+   .then(function(jsonData){
+      var user = jsonData.screen_name;
+      console.log('user retrieved object # ', user)
+   })
+   .catch(function (errorObject){
+      console.log("ERROR SOMETHING NOT RIGHT: ",errorObject);
+   });
+}
+
