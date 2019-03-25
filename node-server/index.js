@@ -5,15 +5,49 @@ const request = require('request-promise');
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+var server = app.listen(3000, listening);
 
-app.use(express.static(__dirname + '/dist/'));
+function listening () {
+   console.log("listening . . . ");
+}
 
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+app.use(express.static('dist'));
 
-const server = http.createServer(app);
+/*app.get("/", (req, res) => {
+   console.log("responding to root route")
+   res.send("Hello from ROOT")
+})
 
-server.listen(port,() => console.log('Running...'));
+app.get("/users", (req, res) => {
+   var user1 = {
+      firstName: "Stephen",
+      lastName: "Curry"
+   }
+   const user2 = {
+      firstName: "Kevin",
+      lastName: "Durrant"
+   }
+
+   res.json([user1, user2])
+
+   //res.send("Nodemon auto updates when I save this file")
+})
+*/
+
+//localhost: 3003
+// app.listen(3003, () => {
+//    console.log("Server is up and listening on 3003")
+// })
+
+// const port = process.env.PORT || 3000;
+
+// app.use(express.static(__dirname + '/dist/'));
+
+// app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
+
+// const server = http.createServer(app);
+
+// server.listen(port,() => console.log('Running...'));
 
 var token = {
    method: 'POST',
@@ -76,7 +110,7 @@ function getUsers(bearerToken){
       method: 'GET',
       uri: 'https://api.twitter.com/1.1/users/show.json',
       qs: {
-         screen_name: twitterHandle
+         screen_name: twitterScreenName
       },
       auth: {
          bearer: bearerToken
