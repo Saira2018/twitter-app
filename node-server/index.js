@@ -29,14 +29,34 @@ var token = {
    json: true // Automatically stringifies the body to JSON
 };
 
+
 //Endpoint setup
 app.get('/api/tweets/search', searchTweets); 
 app.get('/api/tweets/random', randomTweets);
 
 
+
+
+// function authentication () {
+//    request(token)
+//    .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
+//    .then(function (jsonData) {
+//       //store bearerToken to be used in 'get' functions
+//        bearerToken = jsonData.access_token;
+//        //getTweets(bearerToken);
+//    })
+//    .catch(function (err) {
+//       console.log("failure: ", err)
+//    });
+   
+// }
+
+
+
 //Endpoint functions
 function searchTweets (data, response) {
    response.send("Hello World");
+   //authentication();
       request(token)
       .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
       .then(function (jsonData) {
