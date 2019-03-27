@@ -16,8 +16,7 @@ app.use(express.static('dist'));
 
 //API variables
 
-var twitterScreenName = 'worldArchery'
-
+var searchTerm = 'brexit';
 
 //Authentication code
 var token = {
@@ -31,39 +30,21 @@ var token = {
 
 
 //Endpoint setup
-app.get('/api/tweets/search', searchTweets); 
+app.get('/api/tweets/search/', searchTweets); 
 app.get('/api/tweets/random', randomTweets);
-
-
-
-
-// function authentication () {
-//    request(token)
-//    .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
-//    .then(function (jsonData) {
-//       //store bearerToken to be used in 'get' functions
-//        bearerToken = jsonData.access_token;
-//        //getTweets(bearerToken);
-//    })
-//    .catch(function (err) {
-//       console.log("failure: ", err)
-//    });
-   
-// }
-
 
 
 //Endpoint functions
 function searchTweets (data, response) {
    response.send("Hello World");
-   //authentication();
       request(token)
       .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
       .then(function (jsonData) {
          //store bearerToken to be used in 'get' functions
           bearerToken = jsonData.access_token;
-   
-          getTweets(bearerToken);
+      })
+      .then(function() {
+        getTweets(bearerToken);
       })
       .catch(function (err) {
          console.log("failure: ", err)
@@ -75,9 +56,9 @@ function searchTweets (data, response) {
          method: 'GET',
          uri: 'https://api.twitter.com/1.1/search/tweets.json',
          qs: {
-            q: twitterScreenName,
+            q: searchTerm,
             result_type: 'popular',
-            count: 2
+            count: 5
          },
          auth: {
             bearer: bearerToken
@@ -88,6 +69,10 @@ function searchTweets (data, response) {
    request(searchParams)
       .then(function(jsonData){
         var tweets = jsonData.statuses;
+        
+      // NEED TO PRINT THIS TO THE SCREEN SOMEHOW
+
+        console.log("no of tweets ", tweets.length);
          for(i=0 ; i < tweets.length; i++ ){
             console.log('----------- Individual Tweet : #' + (i+1) + ' ------------');
             console.log(tweets[i].text);
@@ -98,9 +83,7 @@ function searchTweets (data, response) {
       .catch(function (errorObject){
          console.log(errorObject);
       });
-   }
-   
-   
+   }   
 }
 
 function randomTweets(data, response) {
@@ -123,7 +106,7 @@ function randomTweets(data, response) {
          method: 'GET',
          uri: 'https://api.twitter.com/1.1/users/show.json',
          qs: {
-            screen_name: twitterScreenName
+            screen_name: searchTerm
          },
          auth: {
             bearer: bearerToken
