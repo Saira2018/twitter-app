@@ -15,7 +15,6 @@ app.use(express.static('dist'));
 
 
 //API variables
-
 var searchTerm = 'brexit';
 
 //Authentication code
@@ -36,7 +35,7 @@ app.get('/api/tweets/random', randomTweets);
 
 //Endpoint functions
 function searchTweets (data, response) {
-   response.send("Hello World");
+  
       request(token)
       .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
       .then(function (jsonData) {
@@ -68,23 +67,24 @@ function searchTweets (data, response) {
    
    request(searchParams)
       .then(function(jsonData){
-        var tweets = jsonData.statuses;
-        
-      // NEED TO PRINT THIS TO THE SCREEN SOMEHOW
 
+        tweets = jsonData.statuses;
+        response.send(tweets);
+      // NEED TO PRINT THIS TO THE Angular App SOMEHOW
+
+      tweets.forEach(entry => {
+         console.log(entry.text);
+         console.log("::::::::::::::::::::::");
+         console.log("twitter user: "+entry.user.screen_name);
+      })
         console.log("no of tweets ", tweets.length);
-         for(i=0 ; i < tweets.length; i++ ){
-            console.log('----------- Individual Tweet : #' + (i+1) + ' ------------');
-            console.log(tweets[i].text);
-            console.log('Favourite count: ' + tweets[i].favorite_count);
-            console.log('------------------------------------------');
-         }
       })
       .catch(function (errorObject){
          console.log(errorObject);
       });
    }   
 }
+
 
 function randomTweets(data, response) {
    response.send("Here are random tweets");
