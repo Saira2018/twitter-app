@@ -6,15 +6,15 @@
 </div>
 
 <div class="twitter-strip">
-  <div class="card-wrapper">
+  <div class="card-wrapper" *ngFor="let user of users$">
     <div class="card-content">
     <div class="twitter-user">
       <div class="twitter-circle-profile"></div>
-      <div class="twitter-name"><p>Scott Wiles</p></div>
-      <div class="twitter-handle"><p>@scottwiles<p></div>
+      <div class="twitter-name"><p>{{ user.name }}</p></div>
+      <div class="twitter-handle"><p>@{{ user.name }}<p></div>
       <div class="twitter-post-dt"><p>1hr</p></div>
       </div>
-      <div class="twitter-text"><p>The tiger who came to tea sat alongside the tiger who always wants my tea.</p></div>
+      <div class="twitter-text"><p>{{ user.email }}</p></div>
       <div class="twitter-image">
         <div class="img-holder">
           <p>Image holder</p>
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <div class="card-wrapper">
+  <!-- <div class="card-wrapper">
       <div class="card-content">
       <div class="twitter-user">
         <div class="twitter-circle-profile"></div>
@@ -70,11 +70,12 @@
             <div class="spacer stats"></div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
 
 </div>
+
 
 <div class="carousel-controls">
   <div class="dot"></div>

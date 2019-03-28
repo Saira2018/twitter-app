@@ -12,6 +12,7 @@ import { SearchTweetComponent } from './search-tweet/search-tweet.component';
 import { RandomTweetComponent } from './random-tweet/random-tweet.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

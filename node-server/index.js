@@ -1,15 +1,12 @@
 const express = require('express');
-const http = require('http');
-const path = require('path');
 const request = require('request-promise');
 const app = express();
 
 //Server Setup
-var server = app.listen(3000, listening);
-
-function listening () {
+app.listen(3000, () => {
    console.log("listening . . . ");
-}
+});
+
 
 app.use(express.static('dist'));
 

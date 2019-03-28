@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-tweet',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchTweetComponent implements OnInit {
 
-  constructor() { }
+  users$: object;
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getUsers().subscribe(
+      data => this.users$ = data
+    )
   }
 
 }

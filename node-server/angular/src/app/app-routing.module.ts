@@ -5,6 +5,7 @@ import { SearchTweetComponent } from './search-tweet/search-tweet.component';
 import { RandomTweetComponent } from './random-tweet/random-tweet.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'search-tweet', component: SearchTweetComponent },
