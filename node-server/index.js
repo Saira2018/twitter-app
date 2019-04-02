@@ -58,7 +58,6 @@ function searchTweets (data, response) { //request or response
          uri: 'https://api.twitter.com/1.1/search/tweets.json',
          qs: {
             q: searchData.searchTerm,
-            //q: searchTerm,
             result_type: 'popular',
             count: 2
          },

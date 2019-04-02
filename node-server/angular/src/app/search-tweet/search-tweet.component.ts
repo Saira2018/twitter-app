@@ -22,7 +22,7 @@ export class SearchTweetComponent implements OnInit {
     //   data => this.users$ = data
     // )
 
-    this.data.getTweets().subscribe(
+    this.data.getTweets(inputValue).subscribe(
       data => this.tweets$ = data
     )
 
@@ -30,13 +30,12 @@ export class SearchTweetComponent implements OnInit {
 
     var submitSearch = document.getElementById("beginSearch");
     console.log("what is HTMLElement ",submitSearch);
-    inputValue;
+    inputValue = '';
 
     submitSearch.addEventListener('click', function (event){
         console.log('clicked on button');
         inputValue = (<HTMLInputElement>document.getElementById("search")).value;
-        console.log("value is:  "+ inputValue);
-        
+        console.log("value is:  "+ inputValue);        
     })
   }
 }
