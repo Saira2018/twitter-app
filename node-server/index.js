@@ -3,7 +3,7 @@ const request = require('request-promise');
 const app = express();
 
 //Server Setup
-app.listen(3000, () => {
+app.listen(4200, () => {
    console.log("listening . . . ");
 });
 
@@ -12,7 +12,7 @@ app.use(express.static('dist'));
 
 
 //API variables
-var searchTerm = 'brexit';
+var searchTerm = 'blueplanet';
 
 //Authentication code
 var token = {
@@ -122,4 +122,11 @@ function randomTweets(data, response) {
    }  
 
 }
+
+function testPing () {
+   console.log("success talk from Angular to node server");
+}
+
+
+
 

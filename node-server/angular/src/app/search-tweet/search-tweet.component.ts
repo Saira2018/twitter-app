@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class SearchTweetComponent implements OnInit {
 
   users$: object;
+  tweets$: object;
 
   constructor(private data: DataService) { }
 
@@ -17,6 +18,23 @@ export class SearchTweetComponent implements OnInit {
     this.data.getUsers().subscribe(
       data => this.users$ = data
     )
+
+    this.data.getTweets().subscribe(
+      data => this.tweets$ = data
+    )
+
+    var submitSearch = document.getElementById("beginSearch");
+    console.log("what is HTMLElement ",submitSearch);
+    var inputValue;
+
+    submitSearch.addEventListener('click', function (event){
+        console.log('clicked on button');
+        inputValue = (<HTMLInputElement>document.getElementById("search")).value;
+        console.log("value:  "+ inputValue);
+    })
   }
+
+
+
 
 }
