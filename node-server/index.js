@@ -2,7 +2,12 @@ const express = require('express');
 const request = require('request-promise');
 const app = express();
 
+
+var testFunc = require('./test');
 //Server Setup
+
+testFunc();
+
 app.listen(4200, () => {
    console.log("listening . . . ");
 });
@@ -11,8 +16,6 @@ app.listen(4200, () => {
 app.use(express.static('dist'));
 
 
-//API variables
-var searchTerm = 'blueplanet';
 
 //Authentication code
 var token = {
@@ -26,13 +29,17 @@ var token = {
 
 
 //Endpoint setup
-app.get('/api/tweets/search/', searchTweets); 
+app.get('/api/tweets/search/:searchTerm', searchTweets); 
 app.get('/api/tweets/random', randomTweets);
 
+var searchData;
 
 //Endpoint functions
-function searchTweets (data, response) {
-  
+function searchTweets (data, response) { //request or response
+      searchData = data.params;
+      console.log("-----------",searchData.searchTerm);
+
+
       request(token)
       .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
       .then(function (jsonData) {
@@ -52,9 +59,10 @@ function searchTweets (data, response) {
          method: 'GET',
          uri: 'https://api.twitter.com/1.1/search/tweets.json',
          qs: {
-            q: searchTerm,
+            q: searchData.searchTerm,
+            //q: searchTerm,
             result_type: 'popular',
-            count: 5
+            count: 2
          },
          auth: {
             bearer: bearerToken
