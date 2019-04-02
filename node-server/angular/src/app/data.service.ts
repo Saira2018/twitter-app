@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+// var example = require('./search-tweet/search-tweet.component');
 
+// console.log("================", example);
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,7 @@ export class DataService {
   }
 
   getTweets(){
-    return this.http.get('/api/tweets/search/');
+    var searchInput = 'gameofthrones'; //import this from a module?
+    return this.http.get('/api/tweets/search/' + searchInput );
   }
 }
