@@ -123,6 +123,7 @@ function randomTweets(data, response) {
 
 }
 
+//I have created this function so that I can test that a function call from Angular is successful. I haven't gotten around to calling it yet though.
 function testPing () {
    console.log("success talk from Angular to node server");
 }
