@@ -3,10 +3,8 @@ const request = require('request-promise');
 const app = express();
 
 
-var testFunc = require('./test');
 //Server Setup
 
-testFunc();
 
 app.listen(4200, () => {
    console.log("listening . . . ");
