@@ -12,30 +12,19 @@ var inputValue;
 })
 export class SearchTweetComponent implements OnInit {
 
+  searchInput: '';  
   users$: object;
   tweets$: object;
 
-  constructor(private data: DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    // this.data.getUsers().subscribe(
-    //   data => this.users$ = data
-    // )
 
-    this.data.getTweets(inputValue).subscribe(
+   }
+
+  search () {
+    this.dataService.getTweets(this.searchInput).subscribe(
       data => this.tweets$ = data
     )
-
-    
-
-    var submitSearch = document.getElementById("beginSearch");
-    console.log("what is HTMLElement ",submitSearch);
-    inputValue = '';
-
-    submitSearch.addEventListener('click', function (event){
-        console.log('clicked on button');
-        inputValue = (<HTMLInputElement>document.getElementById("search")).value;
-        console.log("value is:  "+ inputValue);        
-    })
   }
 }

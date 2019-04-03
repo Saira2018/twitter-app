@@ -12,6 +12,8 @@ import { SearchTweetComponent } from './search-tweet/search-tweet.component';
 import { RandomTweetComponent } from './random-tweet/random-tweet.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +22,14 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     SearchTweetComponent,
     RandomTweetComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

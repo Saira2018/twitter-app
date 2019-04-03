@@ -58,8 +58,8 @@ function searchTweets (data, response) { //request or response
          uri: 'https://api.twitter.com/1.1/search/tweets.json',
          qs: {
             q: searchData.searchTerm,
-            result_type: 'popular',
-            count: 2
+            result_type: 'recent',
+            count: 8
          },
          auth: {
             bearer: bearerToken
@@ -74,10 +74,14 @@ function searchTweets (data, response) { //request or response
         response.send(tweets);
       // NEED TO PRINT THIS TO THE Angular App SOMEHOW
 
+
+
       tweets.forEach(entry => {
          console.log(entry.text);
          console.log("::::::::::::::::::::::");
          console.log("twitter user: "+entry.user.screen_name);
+         console.log("img: "+entry.user.profile_image_url);
+         console.log("picture: "+entry.user.entities.media_url);
       })
         console.log("no of tweets ", tweets.length);
       })
