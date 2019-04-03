@@ -1,7 +1,7 @@
 <div class="box">
   <div class="container-1">
-      <span id="beginSearch" class="icon"><i class="fa fa-search"></i></span>
-      <input type="search" id="search" placeholder="Search..." />      
+      <span id="beginSearch" class="icon" (click)="search()"><i class="fa fa-search"></i></span>
+      <input type="search" id="search" placeholder="Search..."  [(ngModel)]="searchInput" (keyup.enter)="search()"/>     
   </div>
 </div>
 
@@ -17,6 +17,7 @@
       <div class="twitter-text"><p>{{ tweet.text }}</p></div>
       <div class="twitter-image">
         <div class="img-holder">
+       <!--  <img src="{{tweet.user.entities.media.media_url}}"> -->
           <p>Image holder</p>
         </div>
       </div>
@@ -27,59 +28,12 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="card-wrapper">
-      <div class="card-content">
-      <div class="twitter-user">
-        <div class="twitter-circle-profile"></div>
-        <div class="twitter-name"><p>Alvin ASBO</p></div>
-        <div class="twitter-handle"><p>@AlvinASBO<p></div>
-        <div class="twitter-post-dt"><p>2hr</p></div>
-        </div>
-        <div class="twitter-text"><p>Good morning, happy #caturday everyone.  Its a bit overcast here, but Mum said she might let us into the garden later after she's had something called a 'massage'. 😻😹🐾🐾🐾 @bohemiancatsody</p></div>
-        <div class="twitter-image">
-          <div class="img-holder">
-            <p>Image holder</p>
-          </div>
-        </div>
-        <div class="twitter-stats">
-          <div class="twitter-love stats"><p><i class="fa fa-heart"></i>70</p></div>
-          <div class="twitter-retweet stats"><p><i class="fa fa-retweet"></i>17</p></div>
-          <div class="spacer stats"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-wrapper">
-        <div class="card-content">
-        <div class="twitter-user">
-          <div class="twitter-circle-profile"></div>
-          <div class="twitter-name"><p>Vopiscus</p></div>
-          <div class="twitter-handle"><p>@vopiscus_bm<p></div>
-          <div class="twitter-post-dt"><p>11hr</p></div>
-          </div>
-          <div class="twitter-text"><p>New #kitten Henry has discovered there are fun new play opportunities to be found by raiding the recycling bin...</p></div>
-          <div class="twitter-image">
-            <div class="img-holder">
-              <p>Image holder</p>
-            </div>
-          </div>
-          <div class="twitter-stats">
-            <div class="twitter-love stats"><p><i class="fa fa-heart"></i></p></div>
-            <div class="twitter-retweet stats"><p><i class="fa fa-retweet"></i></p></div>
-            <div class="spacer stats"></div>
-          </div>
-        </div>
-      </div> -->
-
-
-
 </div>
 
 
-<div class="carousel-controls">
+<!-- <div class="carousel-controls">
   <div class="dot"></div>
   <div class="dot"></div>
   <div class="dot"></div>
-</div>
+</div> -->
 
