@@ -3,8 +3,6 @@ import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 
 
-var inputValue;
-
 @Component({
   selector: 'app-search-tweet',
   templateUrl: './search-tweet.component.html',
