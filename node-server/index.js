@@ -114,11 +114,10 @@ function randomTweets(data, response) {
       var searchParams = {
          method: 'GET',
          uri: 'https://api.twitter.com/1.1/statuses/user_timeline.json',
-        // uri: 'https://api.twitter.com/1.1/users/show.json',
          qs: {
             //user_id: 142225011,
             screen_name: userData.user,
-            count: 1,
+            count: 5,
             since_id: 50
          },
          auth: {

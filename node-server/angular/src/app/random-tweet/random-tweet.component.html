@@ -1,14 +1,15 @@
 <div id="twitter_random_strip">
+  <div><h1 (click)="clickOnMe1()">ArcheryGB</h1></div>
 
-  <div class="twitter-random-card">
+  <div class="twitter-random-card" *ngFor="let user of userTweet$">
     <div class="top-head">
       <div class="twitter-head">
-        <h4>World Archery <span>@worldarchery</span></h4>
+        <h4>World Archery<span>@worldarchery</span></h4>
         <div class="profile-circle"></div>
     </div>
     </div>
     <div class="expanded-content">
-      <div class="post-header"><div class="profile-circle"></div><p>World Archery<br/><span>@wordarchery</span></p></div>
+      <div class="post-header"><div class="profile-circle"></div><p>World Archery<br/><span>@worldarchery</span></p></div>
       <div class="post-content">NEWS. Mexico 🇲🇽 announces team for 2019 @Hyundai World #Archery Championships and @Lima2019Games 🎯🏹 https://worldarchery.org/news/166156/mexico-announces-team-2019-world-archery-championships-and-pan-american-</div>
       <div class="post-image"><div class="dummy-image"></div></div>
         <div class="twitter-stats">
@@ -19,7 +20,7 @@
     </div>
   </div>
 
-  <div class="twitter-random-card">
+  <!-- <div class="twitter-random-card" *ngFor="let user of userTweet$">
     <div class="top-head">
       <div class="twitter-head">
         <h4>Cats Protection <span>@CatsProtection</span></h4>
@@ -36,7 +37,7 @@
           <div class="spacer stats"><p>11:27 AM - 2 March 2019</p></div>
         </div>
     </div>
-  </div>
+  </div> -->
 
   
 </div>
