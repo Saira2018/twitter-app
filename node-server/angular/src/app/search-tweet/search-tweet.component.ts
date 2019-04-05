@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 export class SearchTweetComponent implements OnInit {
 
   searchInput: '';  
-  users$: object;
   tweets$: object;
 
   constructor(private dataService: DataService) { }
