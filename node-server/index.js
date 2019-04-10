@@ -100,7 +100,6 @@ function randomTweets(data, response) {
    request(token)
    .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
    .then(function (jsonData) {
-      //store bearerToken to be used in 'get' functions
        bearerToken = jsonData.access_token;
 
        getUsers(bearerToken);
@@ -115,7 +114,6 @@ function randomTweets(data, response) {
          method: 'GET',
          uri: 'https://api.twitter.com/1.1/statuses/user_timeline.json',
          qs: {
-            //user_id: 142225011,
             screen_name: userData.user,
             count: 5,
             since_id: 50
@@ -128,31 +126,21 @@ function randomTweets(data, response) {
    
    request(searchParams)
       .then(function(jsonData){
-         //var user = jsonData.screen_name;
          user = jsonData;
          response.send(user);
-         //console.log('user retrieved object # ', user);
-         //console.log('user retrieved object - TEXT ', user.user.description);
+
          user.forEach(entry => {
             console.log(entry.user.name);
             console.log(entry.text);
             console.log("Tweeted "+calculateSince(entry.created_at));
             console.log(entry.id);
-           // console.log(entry.user.id);
          })
       })
       .catch(function (errorObject){
          console.log("ERROR SOMETHING NOT RIGHT: ",errorObject.message);
       });
    }  
-
 }
-
-//I have created this function so that I can test that a function call from Angular is successful. I haven't gotten around to calling it yet though.
-function testPing () {
-   console.log("success talk from Angular to node server");
-}
-
 
 //credit: https://www.sitepoint.com/calculate-twitter-time-tweet-javascript/
 function calculateSince(datetime)
