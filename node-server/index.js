@@ -1,148 +1,29 @@
 const express = require('express');
-const request = require('request-promise');
 const app = express();
 const twitterService = require('./twitterService');
 
 twitterService.getTweets();
+twitterService.getRandomTweets();
 
-//Server Setup
 app.listen(4200, () => {
    console.log("listening . . . ");
 });
 
-console.log("TWITTER SERVICE IS IMPORTED!", twitterServe.getTweets());
 app.use(express.static('dist'));
 
-
-
-//Authentication code
-var token = {
-   method: 'POST',
-   uri: 'https://api.twitter.com/oauth2/token',
-   form: {
-      grant_type: 'client_credentials'
-   },
-   json: true // Automatically stringifies the body to JSON
-};
-
-
 //Endpoint setup
-app.get('/api/tweets/search/:searchTerm', searchTweets); 
-app.get('/api/tweets/random/:user', randomTweets);
-
-var searchData;
-var userData;
-
-//Endpoint functions
-function searchTweets (data, response) { //request or response
-      searchData = data.params;
-      console.log("-----------",searchData.searchTerm);
-
-
-      request(token)
-      .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
-      .then(function (jsonData) {
-         //store bearerToken to be used in 'get' functions
-          bearerToken = jsonData.access_token;
-      })
-      .then(function() {
-        getTweets(bearerToken);
-      })
-      .catch(function (err) {
-         console.log("failure: ", err)
-      });
-   
-   //retrieve tweets from twitter   
-   function getTweets(bearerToken) {
-      var searchParams = {
-         method: 'GET',
-         uri: 'https://api.twitter.com/1.1/search/tweets.json',
-         qs: {
-            q: searchData.searchTerm,
-            result_type: 'recent',
-            count: 8
-         },
-         auth: {
-            bearer: bearerToken
-         },
-         json: true
-      };
-   
-   request(searchParams)
-      .then(function(jsonData){
-
-        tweets = jsonData.statuses;
-        response.send(tweets);
-      // NEED TO PRINT THIS TO THE Angular App SOMEHOW
-
-
-
-         tweets.forEach(entry => {
-            console.log(entry.text);
-            console.log("::::::::::::::::::::::");
-            console.log("twitter user: "+entry.user.screen_name);
-            console.log("img: "+entry.user.profile_image_url);
-            console.log("picture: "+entry.user.entities.media_url);
-         })
-         console.log("no of tweets ", tweets.length);
-      })
-      .catch(function (errorObject){
-         console.log(errorObject);
-      });
-   }   
-}
-
-
-function randomTweets(data, response) {
-   userData = data.params;
-   console.log("userData: ", userData);
-
-   request(token)
-   .auth('CTRQEpzD07wT6r5FLpPMIVONQ','wwMqkbDuLEDq6dGS2jHJNFm76WmAi4zoSs0mIvQEvMEnWKbSFU', true)
-   .then(function (jsonData) {
-       bearerToken = jsonData.access_token;
-
-       getUsers(bearerToken);
-   })
-   .catch(function (err) {
-      console.log("failure: ", err)
+app.get('/api/tweets/search/', function(request, response) {
+   twitterService.getTweets(request.query.searchTerm).then(jsonData => {
+      response.send(jsonData.statuses);
    });
 
-   //Retrieve User data from Twitter
-   function getUsers(bearerToken){
-      var searchParams = {
-         method: 'GET',
-         uri: 'https://api.twitter.com/1.1/statuses/user_timeline.json',
-         qs: {
-            screen_name: userData.user,
-            count: 5,
-            since_id: 50
-         },
-         auth: {
-            bearer: bearerToken
-         },
-         json: true // Automatically stringifies the body to JSON
-      }
-   
-   request(searchParams)
-      .then(function(jsonData){
-         firstTweetObj = jsonData;
-         user = firstTweetObj[0];
-         console.log('first object is', user)
-         response.send(user);
+}); 
+app.get('/api/tweets/random/', function(request, response){
+   twitterService.getRandomTweets(request.query.user, 5).then(jsonData => {
+      response.send(jsonData[1]);
+   })
+});
 
-         user.forEach(entry => {
-            console.log(entry.user.name);
-            console.log(entry.text);
-            console.log("Tweeted "+calculateSince(entry.created_at));
-            console.log(entry.id);
-         })
-      })
-      .catch(function (errorObject){
-         console.log("ERROR SOMETHING NOT RIGHT: ",errorObject.message);
-      });
-   }  
-}
 
 //credit: https://www.sitepoint.com/calculate-twitter-time-tweet-javascript/
 function calculateSince(datetime)
