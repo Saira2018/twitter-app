@@ -10,10 +10,10 @@ export class DataService {
    constructor(private http: HttpClient) { }
 
   getUser(user){
-     return this.http.get('/api/tweets/random/' + user);
+     return this.http.get('/api/tweets/random?user=' + user);
   }
 
   getTweets(searchInput){
-    return this.http.get('/api/tweets/search/' + searchInput );
+    return this.http.get('/api/tweets/search?searchTerm=' + searchInput );
   }
 }
