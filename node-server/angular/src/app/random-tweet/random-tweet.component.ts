@@ -34,7 +34,8 @@ export class RandomTweetComponent implements OnInit {
   clickOnMe1 () {
     console.log("you have clicked on me");
     this.user = 'archeryGB';
-    this.nextFunction();
+    this.loadUserRandomTweet();
+    //this.nextFunction();
   }
 
     nextFunction () {
