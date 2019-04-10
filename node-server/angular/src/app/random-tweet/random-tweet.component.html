@@ -1,7 +1,7 @@
 <div id="twitter_random_strip">
   <div><h1 (click)="clickOnMe1()">ArcheryGB</h1></div>
 
-  <div class="twitter-random-card" *ngFor="let randomTweet of userTweet$">
+  <div class="twitter-random-card">
     <div class="top-head">
       <div class="twitter-head">
         <h4>{{randomTweet.user.name}}<span> @{{randomTweet.user.name}}</span></h4>
@@ -13,25 +13,4 @@
       <div class="post-time">Post time {{ randomTweet.created_at }}</div>
     </div>
   </div>
-
-  <!-- <div class="twitter-random-card" *ngFor="let user of userTweet$">
-    <div class="top-head">
-      <div class="twitter-head">
-        <h4>Cats Protection <span>@CatsProtection</span></h4>
-        <div class="profile-circle"></div>
-    </div>
-    </div>
-    <div class="expanded-content">
-      <div class="post-header"><div class="profile-circle"></div><p>TrustedHousitters<br/><span>@Housesitting</span></p></div>
-      <div class="post-content">Happy #Caturday We're proud to be partnered with @CatsProtection the UK's leading feline welfare charity. When visiting your local shelter this weekend ask about @Housesitting, together we're helping keep cats happy at home #rescuecats #catsarefamily #catsLOVEcompany</div>
-      <div class="post-image"><div class="dummy-image"></div></div>
-        <div class="twitter-stats">
-          <div class="twitter-love stats"><p><i class="fa fa-heart"></i>64</p></div>
-          <div class="twitter-retweet stats"><p><i class="fa fa-retweet"></i>11</p></div>
-          <div class="spacer stats"><p>11:27 AM - 2 March 2019</p></div>
-        </div>
-    </div>
-  </div> -->
-
-  
 </div>
