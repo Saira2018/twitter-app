@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
 export class RandomTweetComponent implements OnInit {
 
   user: string; 
-  userTweet$: object;
+  randomTweet: object;
 
   constructor(private dataService: DataService) { }
 
@@ -21,13 +21,13 @@ export class RandomTweetComponent implements OnInit {
 
   loadUserRandomTweet () {
     this.dataService.getUser(this.user).subscribe(
-      data => this.userTweet$ = data
+      data => this.randomTweet = data
     )
    // this.arrayReturned();
   }
 
   arrayReturned() {
-    console.log("what is userTweet$ : ", this.userTweet$);
+    console.log("what is userTweet$ : ", this.randomTweet);
     console.log("what is user : ", this.user);
   }
 

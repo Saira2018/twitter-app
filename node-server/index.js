@@ -19,8 +19,9 @@ app.get('/api/tweets/search/', function(request, response) {
 
 }); 
 app.get('/api/tweets/random/', function(request, response){
-   twitterService.getRandomTweets(request.query.user, 5).then(jsonData => {
-      response.send(jsonData[1]);
+   twitterService.getRandomTweets(request.query.user, 5).then(tweets => {
+      const randomTweet = tweets[0];
+      response.send(randomTweet);
    })
 });
 
