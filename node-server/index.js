@@ -1,16 +1,16 @@
 const express = require('express');
 const request = require('request-promise');
 const app = express();
+const twitterService = require('./twitterService');
 
+twitterService.getTweets();
 
 //Server Setup
-
-
 app.listen(4200, () => {
    console.log("listening . . . ");
 });
 
-
+console.log("TWITTER SERVICE IS IMPORTED!", twitterServe.getTweets());
 app.use(express.static('dist'));
 
 
@@ -126,7 +126,9 @@ function randomTweets(data, response) {
    
    request(searchParams)
       .then(function(jsonData){
-         user = jsonData;
+         firstTweetObj = jsonData;
+         user = firstTweetObj[0];
+         console.log('first object is', user)
          response.send(user);
 
          user.forEach(entry => {
