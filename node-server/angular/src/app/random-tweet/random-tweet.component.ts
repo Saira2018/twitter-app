@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
 })
 export class RandomTweetComponent implements OnInit {
 
-  user: string; 
+  user: string = ''; 
   randomTweet: object;
 
   constructor(private dataService: DataService) { }
@@ -33,14 +33,28 @@ export class RandomTweetComponent implements OnInit {
 
   clickOnMe1 () {
     console.log("you have clicked on me");
-    this.user = 'archeryGB';
+    this.user = 'worldarchery';
     this.loadUserRandomTweet();
     //this.nextFunction();
   }
 
-    nextFunction () {
-      console.log("user is now: "+this.user);
-      this.loadUserRandomTweet();
-    }
+  clickOnMe2(){
+    this.user = 'GameOfThrones';
+    this.loadUserRandomTweet();
+  }
 
+  clickonMe3(){
+    this.user = 'SimonsCat';
+    this.loadUserRandomTweet();
+  }
+
+  clickonMe4(){
+    this.user = 'snowpatrol';
+    this.loadUserRandomTweet();
+  }
+
+  clickonMe5(){
+    this.user = 'Headspace';
+    this.loadUserRandomTweet();
+  }
 }

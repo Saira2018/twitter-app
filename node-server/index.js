@@ -20,11 +20,15 @@ app.get('/api/tweets/search/', function(request, response) {
 }); 
 app.get('/api/tweets/random/', function(request, response){
    twitterService.getRandomTweets(request.query.user, 5).then(tweets => {
-      const randomTweet = tweets[0];
+      const randomTweet = tweets[getRandomInt(5)];
       response.send(randomTweet);
    })
 });
 
+//credit: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 //credit: https://www.sitepoint.com/calculate-twitter-time-tweet-javascript/
 function calculateSince(datetime)
