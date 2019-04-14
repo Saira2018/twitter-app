@@ -1,16 +1,18 @@
 <div id="twitter_random_strip">
-  <div><button (click)="clickOnMe1()">World Archery</button>
-  <button (click)="clickOnMe2()">Game of Thrones</button>
- <button (click)="clickOnMe3()">Simon's Cat</button>
-  <button (click)="clickOnMe4()">Snow Patrol</button>
-  <button (click)="clickOnMe5()">Headspace</button></div>
+  <div>
+    <button (click)="clickOnMe1()">World Archery</button>
+    <button (click)="clickOnMe2()">Game of Thrones</button>
+    <button (click)="clickOnMe3()">Simon's Cat</button>
+    <button (click)="clickOnMe4()">Snow Patrol</button>
+    <button (click)="clickOnMe5()">Headspace</button>
+  </div>
 
   <div class="twitter-random-card">
     <div class="top-head">
       <div class="twitter-head">
         <h4>{{randomTweet.user.name}}<span> @{{randomTweet.user.name}}</span></h4>
         <div class="profile-circle"></div>
-    </div>
+      </div>
     </div>
     <div class="expanded-content">
       <div class="post-content">{{ randomTweet.text}}</div>
