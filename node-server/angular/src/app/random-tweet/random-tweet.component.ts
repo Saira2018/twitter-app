@@ -8,53 +8,23 @@ import { DataService } from '../data.service';
 })
 export class RandomTweetComponent implements OnInit {
 
-  user: string = ''; 
   randomTweet: object;
+
+  private USERS: object = {
+    WORLD_ARCHERY: 'worldarchery',
+    GOT: 'GameOfThrones',
+    SIMONS_CAT: 'SimonsCat',
+    SNOW_PATROL: 'snowpatrol',
+    HEADSPACE: 'headspace'
+  }
 
   constructor(private dataService: DataService) { }
 
-  ngOnInit() {
-    console.log("what is user: "+ this.user);
-  }
+  ngOnInit()  {}
 
-
-
-  loadUserRandomTweet () {
-    this.dataService.getUser(this.user).subscribe(
+  loadUserRandomTweet (username) {
+    this.dataService.getUser(username).subscribe(
       data => this.randomTweet = data
     )
-   // this.arrayReturned();
-  }
-
-  arrayReturned() {
-    console.log("what is userTweet$ : ", this.randomTweet);
-    console.log("what is user : ", this.user);
-  }
-
-  clickOnMe1 () {
-    console.log("you have clicked on me");
-    this.user = 'worldarchery';
-    this.loadUserRandomTweet();
-    //this.nextFunction();
-  }
-
-  clickOnMe2(){
-    this.user = 'GameOfThrones';
-    this.loadUserRandomTweet();
-  }
-
-  clickonMe3(){
-    this.user = 'SimonsCat';
-    this.loadUserRandomTweet();
-  }
-
-  clickonMe4(){
-    this.user = 'snowpatrol';
-    this.loadUserRandomTweet();
-  }
-
-  clickonMe5(){
-    this.user = 'Headspace';
-    this.loadUserRandomTweet();
   }
 }

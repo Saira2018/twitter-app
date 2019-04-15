@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
 const twitterService = require('./twitterService');
+const path = require('path');
 
-twitterService.getTweets();
-twitterService.getRandomTweets();
 
 app.listen(4200, () => {
    console.log("listening . . . ");
@@ -19,11 +18,17 @@ app.get('/api/tweets/search/', function(request, response) {
 
 }); 
 app.get('/api/tweets/random/', function(request, response){
-   twitterService.getRandomTweets(request.query.user, 5).then(tweets => {
-      const randomTweet = tweets[getRandomInt(5)];
+   twitterService.getRandomTweets(request.query.user, 50).then(tweets => {
+      const randomTweet = tweets[getRandomInt(50)];
       response.send(randomTweet);
    })
 });
+
+
+app.get('/*', function (request, response){
+  response.sendFile(path.join(__dirname, 'dist','index.html'));
+})
+
 
 //credit: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomInt(max) {
