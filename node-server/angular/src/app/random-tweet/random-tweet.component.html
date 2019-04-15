@@ -1,22 +1,24 @@
-<div id="twitter_random_strip">
-  <div>
-    <button (click)="clickOnMe1()">World Archery</button>
-    <button (click)="clickOnMe2()">Game of Thrones</button>
-    <button (click)="clickOnMe3()">Simon's Cat</button>
-    <button (click)="clickOnMe4()">Snow Patrol</button>
-    <button (click)="clickOnMe5()">Headspace</button>
-  </div>
-
-  <div class="twitter-random-card">
-    <div class="top-head">
-      <div class="twitter-head">
-        <h4>{{randomTweet.user.name}}<span> @{{randomTweet.user.name}}</span></h4>
-        <div class="profile-circle"></div>
-      </div>
+<div id="random-container">
+  <div id="twitter_random_strip">
+    <div id="twitter_users">
+      <button (click)="loadUserRandomTweet(USERS.WORLD_ARCHERY)">World Archery</button>
+      <button (click)="loadUserRandomTweet(USERS.GOT)">Game of Thrones</button>
+      <button (click)="loadUserRandomTweet(USERS.SIMONS_CAT)">Simon's Cat</button>
+      <button (click)="loadUserRandomTweet(USERS.SNOW_PATROL)">Snow Patrol</button>
+      <button (click)="loadUserRandomTweet(USERS.HEADSPACE)">Headspace</button>
     </div>
-    <div class="expanded-content">
-      <div class="post-content">{{ randomTweet.text}}</div>
-      <div class="post-time">Post time {{ randomTweet.created_at }}</div>
+
+    <div class="twitter-random-card" *ngIf="randomTweet">
+      <div class="top-head">
+        <div class="twitter-head">
+          <h4>{{randomTweet.user.name}}<span> @{{randomTweet.user.name}}</span></h4>
+          <div class="profile-circle"></div>
+        </div>
+      </div>
+      <div class="expanded-content">
+        <div class="post-content">{{ randomTweet.text}}</div>
+        <div class="post-time">Posted: {{ randomTweet.created_at }}</div>
+      </div>
     </div>
   </div>
 </div>

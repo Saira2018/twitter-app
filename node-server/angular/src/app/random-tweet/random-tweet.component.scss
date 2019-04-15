@@ -1,14 +1,36 @@
+#random-container {
+  width: 90%;
+  margin: auto;
+ // background: white;
+  padding: 10px;
+}
+
 #twitter-random-strip {
     display: inline-block;
+    // width: 50%;
+    // margin: auto;
 }
+
+#twitter_users {
+  display: flex;
+  margin: 0 auto;
+  width: 564px;
+  position: relative;
+  > button {
+    margin: 10px;
+  }
+  
+}
+
 
 .twitter-random-card {
     position: relative;
     width: 564px;
     height: 606px;
    // background-color: #fff;
-    float: left;
-    margin-right: 43px;
+    //float: left;
+    //margin-right: 43px;
+    margin: auto;
 }
 
 .top-head {
@@ -55,7 +77,7 @@
     background-color: white;
     position:relative;
     top: 174px;
-    height: 432px;
+    height: 145px;
   //box-sizing: border-box;
   > .post-header {
       float: left;
